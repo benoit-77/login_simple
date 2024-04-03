@@ -11,22 +11,27 @@ class UserController
         $messages = [];
 
         if (isset($_POST["submit"])) {
-            if (!isset($_POST["name"])) {
+            if (!isset($_POST["email"])) {
                 $messages[] = [
                     "success" => false,
                     "text" => "Veuillez indiquer votre nom d'utilisateur."
                 ];
             }
-            if (!isset($_POST["password"])) {
+
+            $uppercase = preg_match('@[A-Z]@', $_POST["password"]);
+            $lowercase = preg_match('@[a-z]@', $_POST["password"]);
+            $number = preg_match('@[0-9]@', $_POST["password"]);
+
+            if (!isset($_POST["password"]) || !$uppercase || !$lowercase || !$number || strlen($_POST["password"]) < 8) {
                 $messages[] = [
                     "success" => false,
-                    "text" => "Veuillez indiquer votre mot de passe."
+                    "text" => "Votre mot de passe n'est pas valide. Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule et un chiffre."
                 ];
             }
 
             if (count($messages) == 0) {
 
-                $user = User::readOneUser($_POST["name"]);
+                $user = User::readOneUser($_POST["email"]);
                 if ($user == false) {
                     $messages[] = [
                         "success" => false,
@@ -46,7 +51,7 @@ class UserController
                         ];
 
                         $_SESSION["id_user"] = $user->id_user;
-                        $_SESSION["name"] = $user->name;
+                        $_SESSION["email"] = $user->email;
                         $_SESSION["password"] = $user->password;
 
                         header("Location: /index.php");

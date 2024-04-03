@@ -7,9 +7,21 @@
     <title>Page de connexion</title>
 </head>
 
+<header>
+    <?php
+
+    if (isset($_SESSION["email"])) { ?>
+        <p id="welcome"> Bienvenue <?= $_SESSION["email"] ?> ! <a href="/deconnexion.php">Déconnexion</a></p> <?php
+                                                                                                            }
+
+                                                                                                                ?>
+</header>
+
 <body>
     <main>
+        <h1>Connectez-vous</h1>
 
+        <h2>Connexion à votre compte </h2>
 
         <?php
 
@@ -19,26 +31,15 @@
                     <p class="alert alert-success"><?= $message["text"] ?></p>
                 <?php } else { ?>
                     <p class="alert alert-danger"><?= $message["text"] ?></p>
-            <?php }
+        <?php }
             }
         }
 
-        if (isset($_SESSION["message"])) { ?>
-            <p class="alert alert-warning"> <?= $_SESSION["message"] ?> </p>
-        <?php
-            unset($_SESSION["message"]);
-        }
-
-
-
         ?>
-        <h1>Connectez-vous</h1>
 
-        <h2>Connexion à votre compte </h2>
-
-        <form method="post">
-            <label for="name"><i class="bi bi-at" style="font-size: 50px;"></i></label>
-            <input type="name" name="name" id="name" placeholder="Nom d'utilisateur" required>
+        <form action="#" method="post">
+            <label for="email"><i class="bi bi-at" style="font-size: 50px;"></i></label>
+            <input type="email" name="email" id="email" placeholder="Email" required>
             <br />
             <label for="password"><i class="bi bi-lock" style="font-size: 50px;"></i></label>
             <input type="password" id="password" name="password" minlength="8" placeholder="Mot de passe" required>
