@@ -14,7 +14,7 @@ class UserController
             if (!isset($_POST["email"])) {
                 $messages[] = [
                     "success" => false,
-                    "text" => "Veuillez indiquer votre nom d'utilisateur."
+                    "text" => "Veuillez indiquer votre adresse mail."
                 ];
             }
 

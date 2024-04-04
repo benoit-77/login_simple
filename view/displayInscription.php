@@ -4,24 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de connexion</title>
+    <title>Page de création de compte</title>
 </head>
-
-<header>
-    <?php
-
-    if (isset($_SESSION["email"])) { ?>
-        <p id="welcome"> Bienvenue <?= $_SESSION["email"] ?> ! <a href="/deconnexion.php">Déconnexion</a></p> <?php
-                                                                                                            }
-
-                                                                                                                ?>
-</header>
 
 <body>
     <main>
-        <h1>Connectez-vous</h1>
-
-        <h2>Connexion à votre compte</h2>
+        <h1>Création de compte</h1>
 
         <?php
 
@@ -44,11 +32,12 @@
             <label for="password"><i class="bi bi-lock" style="font-size: 50px;"></i></label>
             <input type="password" id="password" name="password" minlength="8" placeholder="Mot de passe" required>
             <br />
+            <label for="password"><i class="bi bi-lock" style="font-size: 50px;"></i></label>
+            <input type="password" id="passwordCheck" name="passwordCheck" minlength="8" placeholder="Confirmation mot de passe" required>
+            <br />
 
-            <button type="submit" class="btn btn-primary" name="submit">Connexion</button>
+            <button type="submit" class="btn btn-primary" name="submit">Créer un compte</button>
         </form>
-
-        <p>Pas de compte? Créer le vôtre <a href="/../inscription.php">ici</a>.</p>
 
     </main>
 
