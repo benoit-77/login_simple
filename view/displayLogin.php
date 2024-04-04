@@ -4,21 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de connexion</title>
+    <title><?= TITLE ?></title>
 </head>
-
-<header>
-    <?php
-
-    if (isset($_SESSION["email"])) { ?>
-        <p id="welcome"> Bienvenue <?= $_SESSION["email"] ?> ! <a href="/deconnexion.php">Déconnexion</a></p> <?php
-                                                                                                            }
-
-                                                                                                                ?>
-</header>
 
 <body>
     <main>
+
+        <?php
+
+        if (isset($_SESSION["email"])) { ?>
+            <p id="welcome"> Bienvenue <?= $_SESSION["email"] ?> ! <a href="/deconnexion.php">Déconnexion</a></p> <?php
+                                                                                                                }
+
+                                                                                                                    ?>
         <h1>Connectez-vous</h1>
 
         <h2>Connexion à votre compte</h2>
